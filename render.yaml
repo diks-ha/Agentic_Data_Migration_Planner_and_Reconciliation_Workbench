@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: migration-workbench
+    runtime: docker
+    healthCheckPath: /healthz
+    disk: {name: data, mountPath: /data, sizeGB: 1}
+    envVars:
+      - {key: ANTHROPIC_API_KEY, sync: false}
+      - {key: ANTHROPIC_MODEL, value: claude-sonnet-4-6}
+      - {key: DB_PATH, value: /data/migration.db}
